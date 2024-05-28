@@ -1,6 +1,6 @@
 import { Cover } from './components/cover/Cover';
 import { Footer } from './components/footer/Footer';
-import { Post } from './components/post/Post';
+import { PostList } from './components/post/PostList';
 import { Profile } from './components/profile/Profile';
 
 export function App() {
@@ -9,9 +9,7 @@ export function App() {
       <Cover />
       <Profile />
       <div className='posts'>
-        <Post />
-        <Post />
-        <Post />
+        <PostList />
       </div>
       <Footer />
     </div>
