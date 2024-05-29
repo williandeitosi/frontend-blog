@@ -1,23 +1,41 @@
+import { useEffect, useState } from 'react';
 import { Post } from './Post';
 
+interface PostType {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  date: string;
+}
+
 export function PostList() {
-  const posts = [
-    {
-      title: 'agua',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore qui sed doloribus a est quaerat voluptate tempore similique, officiis, cupiditate perspiciatis. Mollitia nisi perspiciatis dolor optio repellat ratione a ab!',
-    },
-    {
-      title: 'pedra',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore qui sed doloribus a est quaerat voluptate tempore similique, officiis, cupiditate perspiciatis. Mollitia nisi perspiciatis dolor optio repellat ratione a ab!',
-    },
-  ];
+  const [postList, setPostList] = useState<PostType[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/posts')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data: PostType[]) => {
+        setPostList(data);
+      })
+      .catch((error) => console.error('error fetch posts: ', error));
+  }, []);
 
   return (
     <>
-      {posts.map((post) => (
-        <Post title={post.title} description={post.description} />
+      {postList.map((post, index) => (
+        <Post
+          key={index}
+          author={post.author}
+          date={post.date}
+          title={post.title}
+          description={post.content}
+        />
       ))}
     </>
   );

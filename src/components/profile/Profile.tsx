@@ -1,6 +1,18 @@
+import { Plus } from '@phosphor-icons/react';
 import style from './Profile.module.css';
+import { useState } from 'react';
+import { Modal } from '../modal/Modal';
 
 export function Profile() {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const handleNewPost = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={style.container}>
       <div className={style.boxAvatar}>
@@ -24,8 +36,14 @@ export function Profile() {
           eaque quas vero rerum autem cumque cum alias, cupiditate unde at!
           Illo, explicabo debitis.
         </p>
-        <h3>Posts recentes</h3>
       </div>
+      <div className={style.newPost}>
+        <h3>Posts recentes</h3>
+        <button onClick={handleNewPost}>
+          <Plus size={18} weight='fill' /> Novo post
+        </button>
+      </div>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

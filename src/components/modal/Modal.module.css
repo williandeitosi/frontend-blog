@@ -1,0 +1,98 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 35rem;
+  width: 30rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.699);
+  z-index: 999;
+}
+
+.boxInputs {
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.boxInputs input {
+  height: 3rem;
+  width: 70%;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  padding: 5px;
+}
+.boxInputs textarea {
+  height: 15rem;
+  width: 70%;
+  resize: none;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  padding: 5px;
+}
+
+.inputsArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.boxBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnPublic {
+  align-self: flex-end;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: gray;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s linear;
+}
+.btncancel {
+  align-self: flex-end;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 0, 0, 0.377);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s linear;
+}
+
+.btnPublic:hover {
+  background-color: black;
+}
+.btncancel:hover {
+  background-color: red;
+}

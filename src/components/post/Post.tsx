@@ -3,6 +3,8 @@ import style from './Post.module.css';
 interface PostProps {
   title: string;
   description: string;
+  author: string;
+  date: string;
 }
 
 export function Post({ title, description }: PostProps) {
