@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { Post } from './Post';
+import style from './Post.module.css';
 
 interface PostType {
   id: number;
@@ -9,26 +9,14 @@ interface PostType {
   date: string;
 }
 
-export function PostList() {
-  const [postList, setPostList] = useState<PostType[]>([]);
+interface PostListProps {
+  posts: PostType[];
+}
 
-  useEffect(() => {
-    fetch('http://localhost:3000/posts')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data: PostType[]) => {
-        setPostList(data);
-      })
-      .catch((error) => console.error('error fetch posts: ', error));
-  }, []);
-
+export function PostList({ posts }: PostListProps) {
   return (
-    <>
-      {postList.map((post, index) => (
+    <div className={style.postListContainer}>
+      {posts.map((post, index) => (
         <Post
           key={index}
           author={post.author}
@@ -37,6 +25,6 @@ export function PostList() {
           description={post.content}
         />
       ))}
-    </>
+    </div>
   );
 }

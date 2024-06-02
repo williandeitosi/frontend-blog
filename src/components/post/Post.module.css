@@ -1,5 +1,4 @@
 .containerPost {
-  margin: 0 7rem;
   padding: 1rem;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -7,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .containerPost > p {
@@ -16,7 +15,7 @@
   text-overflow: ellipsis;
 }
 .containerPost > a {
-  width: 120px;
+  align-self: center;
   padding: 0.5rem 0;
   text-decoration: none;
   color: green;
@@ -24,4 +23,14 @@
 .containerPost > a:hover {
   font-weight: bold;
   font-size: 1rem;
+}
+
+.postListContainer {
+  margin: 0 7rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }

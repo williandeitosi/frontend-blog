@@ -1,12 +1,21 @@
 import { FormEvent, useState } from 'react';
 import style from './Modal.module.css';
 
+interface PostType {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  date: string;
+}
+
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  addPost: (post: PostType) => void;
 }
 
-export function Modal({ isOpen, onClose }: ModalProps) {
+export function Modal({ isOpen, onClose, addPost }: ModalProps) {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
@@ -28,12 +37,12 @@ export function Modal({ isOpen, onClose }: ModalProps) {
         body: JSON.stringify(postData),
       });
 
-      if (!response) {
+      if (!response.ok) {
         throw new Error('Failed to create post');
       }
 
       const result = await response.json();
-      console.log('Post Created: ', result);
+      addPost(result);
       onClose();
     } catch (error) {
       console.error('Error creating post: ', error);
