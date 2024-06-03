@@ -1,5 +1,7 @@
 import { FormEvent, useState } from 'react';
 import style from './Modal.module.css';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface PostType {
   id: number;
@@ -59,35 +61,37 @@ export function Modal({ isOpen, onClose, addPost }: ModalProps) {
               <h2>Criar um novo post</h2>
               <p>Preencha o formulário para criar uma nova postagem no blog.</p>
             </div>
-            <div className={style.inputsArea}>
-              <div className={style.boxInputs}>
-                <label htmlFor='title'>Titulo</label>
-                <input
-                  type='text'
-                  id='title'
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  required
-                />
-              </div>
-              <div className={style.boxInputs}>
-                <label htmlFor='content'>Counteudo</label>
-                <textarea
-                  id='content'
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  required
-                ></textarea>
-              </div>
-              <div className={style.boxInputs}>
-                <label htmlFor='author'>Autor</label>
-                <input
-                  type='text'
-                  id='author'
-                  value={author}
-                  onChange={(e) => setAuthor(e.target.value)}
-                  required
-                />
+            <div className={style.containerInputs}>
+              <div className={style.inputsArea}>
+                <div className={style.boxInputs}>
+                  <label htmlFor='title'>Titulo</label>
+                  <input
+                    type='text'
+                    id='title'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className={style.boxInputs}>
+                  <label htmlFor='author'>Autor</label>
+                  <input
+                    type='text'
+                    id='author'
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className={style.textContainer}>
+                  <label htmlFor='content'>Counteudo</label>
+                  <ReactQuill
+                    className={style.textEdior}
+                    theme='snow'
+                    value={content}
+                    onChange={setContent}
+                  />
+                </div>
               </div>
             </div>
             <div className={style.boxBtns}>

@@ -13,8 +13,8 @@
   flex-direction: column;
   justify-content: space-between;
 
-  height: 35rem;
-  width: 30rem;
+  height: 90%;
+  width: 90%;
 }
 
 .modalOverlay {
@@ -23,37 +23,44 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.699);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 999;
 }
 
 .boxInputs {
   font-weight: bold;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.containerInputs {
+  height: 80%;
+  width: 100%;
 }
 
 .boxInputs input {
-  height: 3rem;
-  width: 70%;
+  height: 2rem;
+  width: 100%;
   border-radius: 8px;
   outline: none;
   border: 2px solid rgba(0, 0, 0, 0.3);
   padding: 5px;
 }
-.boxInputs textarea {
-  height: 15rem;
-  width: 70%;
-  resize: none;
-  border-radius: 8px;
+.textContainer {
+  font-weight: bold;
+  height: 80%;
+  width: 100%;
   outline: none;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  padding: 5px;
+}
+
+.textEdior {
+  height: 80%;
 }
 
 .inputsArea {
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
