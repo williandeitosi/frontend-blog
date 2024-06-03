@@ -11,8 +11,7 @@ export function Post({ title, description }: PostProps) {
   return (
     <div className={style.containerPost}>
       <h1>{title}</h1>
-      <p>{description}</p>
-
+      <div dangerouslySetInnerHTML={{ __html: description }} />
       <a href='#'>Ler Mais +</a>
     </div>
   );
