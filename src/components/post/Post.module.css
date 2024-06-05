@@ -5,24 +5,48 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
+  height: 15rem;
+  width: 100%;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .containerPost > h1 {
   align-self: center;
 }
 
-.containerPost > p {
-  white-space: nowrap;
+.containerPost > div {
+  height: 100%;
+  word-wrap: break-word;
+  font-size: 0.9rem;
   overflow: hidden;
-  text-overflow: ellipsis;
+  position: relative;
 }
+
+.containerPost > div::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 3rem; /* Altura do gradiente */
+  background: linear-gradient(to bottom, transparent, #cecece);
+}
+
 .containerPost > a {
   align-self: center;
   padding: 0.5rem 0;
   text-decoration: none;
   color: green;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
 }
+
 .containerPost > a:hover {
   font-weight: bold;
   font-size: 1rem;

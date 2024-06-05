@@ -3,6 +3,50 @@ import style from './Modal.module.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+import hljs from 'highlight.js/lib/common';
+import 'highlight.js/styles/github-dark.css';
+
+import 'highlight.js/lib/languages/javascript';
+import 'highlight.js/lib/languages/python';
+
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ script: 'sub' }, { script: 'super' }],
+    [{ color: [] }, { background: [] }],
+    [{ align: [] }],
+    ['link', 'image', 'video'],
+    [{ 'code-block': true }],
+    ['clean'],
+  ],
+  syntax: {
+    highlight: (text: string) =>
+      hljs.highlightAuto(text, ['javascript', 'python']).value,
+  },
+};
+
+const formats = [
+  'header',
+  'font',
+  'list',
+  'bullet',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'script',
+  'color',
+  'background',
+  'align',
+  'link',
+  'image',
+  'video',
+  'code-block',
+];
+
 interface PostType {
   id: number;
   title: string;
@@ -89,6 +133,8 @@ export function Modal({ isOpen, onClose, addPost }: ModalProps) {
                     className={style.textEdior}
                     theme='snow'
                     value={content}
+                    modules={modules}
+                    formats={formats}
                     onChange={setContent}
                   />
                 </div>
