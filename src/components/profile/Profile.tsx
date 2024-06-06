@@ -6,7 +6,7 @@ import { PostList } from '../post/PostList';
 import style from './Profile.module.css';
 
 interface PostType {
-  id: number;
+  id: string;
   title: string;
   content: string;
   author: string;

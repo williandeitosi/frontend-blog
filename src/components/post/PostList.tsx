@@ -2,7 +2,7 @@ import { Post } from './Post';
 import style from './Post.module.css';
 
 interface PostType {
-  id: number;
+  id: string;
   title: string;
   content: string;
   author: string;
@@ -18,6 +18,7 @@ export function PostList({ posts }: PostListProps) {
     <div className={style.postListContainer}>
       {posts.map((post, index) => (
         <Post
+          id={post.id}
           key={index}
           author={post.author}
           date={post.date}
