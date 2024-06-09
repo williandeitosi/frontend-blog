@@ -1,4 +1,5 @@
 import style from './Post.module.css';
+import { Link } from 'react-router-dom';
 
 interface PostProps {
   id: string;
@@ -12,9 +13,8 @@ export function Post({ id, title, description }: PostProps) {
   return (
     <div className={style.containerPost}>
       <h1>{title}</h1>
-      <p>{id}</p>
       <div dangerouslySetInnerHTML={{ __html: description }} />
-      <a href='#'>Ler Mais +</a>
+      <Link to={`/posts/${id}`}>Ler Mais +</Link>
     </div>
   );
 }
