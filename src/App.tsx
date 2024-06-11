@@ -6,7 +6,7 @@ import { ReadMore } from './components/readPoster/ReadMore';
 export function App() {
   return (
     <Router>
-      <div>
+      <div className='container'>
         <Routes>
           <Route path='/' element={<Profile />} />
           <Route path='/posts/:id' element={<ReadMore />} />

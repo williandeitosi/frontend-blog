@@ -6,7 +6,9 @@ import style from './ReadMore.module.css';
 
 interface PostData {
   title: string;
+  author: string;
   content: string;
+  date: string;
 }
 
 export function ReadMore() {
@@ -32,7 +34,10 @@ export function ReadMore() {
 
   return (
     <div className={style.container}>
-      <h1>{readPost?.title}</h1>
+      <h1>{readPost.title}</h1>
+      <p className={style.author}>
+        Autor: <span>{readPost.author}</span>
+      </p>
       <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />;
     </div>
   );
