@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
-import { Home } from './components/profile/Home';
+import { Home } from './components/home/Home';
 import { ReadMore } from './components/readPoster/ReadMore';
 import { CreateContent } from './components/pageContent/CreateContent';
 import { useEffect, useState } from 'react';
