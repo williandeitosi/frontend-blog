@@ -32,7 +32,7 @@
   right: 0;
   width: 100%;
   height: 3rem; /* Altura do gradiente */
-  background: linear-gradient(to bottom, transparent, #cecece);
+  background: linear-gradient(to bottom, transparent, #ffffff);
 }
 
 .containerPost > a {

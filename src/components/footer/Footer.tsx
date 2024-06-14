@@ -1,5 +1,5 @@
 import './Footer.module.css';
 
 export function Footer() {
-  return <footer>created by: Willian Giovanini Dei Tosi</footer>;
+  return <footer>&copy; 2024 Willian</footer>;
 }

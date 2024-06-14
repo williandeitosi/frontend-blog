@@ -34,15 +34,15 @@
 .ql-editor {
   flex: 1;
   height: auto;
-  max-height: none; /* Remove any fixed height constraint */
-  overflow: visible; /* Ensure content is visible and container grows */
+  max-height: none;
+  overflow: visible;
 }
 
 .twoColumns {
   gap: 1rem;
   padding: 0.5rem;
   background-color: #fff;
-  min-height: 100vh; /* Ensure it takes at least the full viewport height */
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -75,9 +75,9 @@
 }
 
 .customEditorArea {
-  height: auto; /* Definir uma altura automática */
-  max-height: none; /* Permitir crescimento */
-  overflow: visible; /* Garantir que o conteúdo é visível */
+  height: auto;
+  max-height: none;
+  overflow: visible;
 }
 
 .inputsArea {
@@ -89,11 +89,10 @@
 
 .boxBtns {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
 }
 
 .btnPublic {
-  align-self: flex-end;
   padding: 1rem 2rem;
   border-radius: 8px;
   border: none;
