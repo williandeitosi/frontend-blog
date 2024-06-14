@@ -1,10 +1,11 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { Footer } from './components/footer/Footer';
-import { Home } from './components/home/Home';
-import { ReadMore } from './components/readPoster/ReadMore';
-import { CreateContent } from './components/pageContent/CreateContent';
 import { useEffect, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Login } from './components/admin/login/Login';
+import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
+import { Home } from './components/home/Home';
+import { CreateContent } from './components/pageContent/CreateContent';
+import { ReadMore } from './components/readPoster/ReadMore';
 
 interface PostType {
   id: string;
@@ -47,9 +48,10 @@ export function App() {
               path='/hidden'
               element={<CreateContent addPost={addPost} />}
             />
+            <Route path='/admin' element={<Login />} />
           </Routes>
         </div>
-        {window.location.pathname !== '/hidden' && <Footer />}
+        <Footer />
       </div>
     </Router>
   );

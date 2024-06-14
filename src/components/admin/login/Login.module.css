@@ -1,0 +1,44 @@
+.boxLogin {
+  background-color: rgb(202, 202, 202);
+  height: 15rem;
+  width: 25rem;
+
+  font-size: 0.8rem;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.boxLogin h1 {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
+
+.boxInputs {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxInputs input {
+  height: 1.5rem;
+  padding: 0.3rem;
+  width: 50%;
+}
+
+.boxLogin button {
+  height: 3rem;
+  width: 50%;
+  align-self: center;
+
+  cursor: pointer;
+}
+.boxLogin button:hover {
+  background-color: rgb(198, 198, 198);
+}
