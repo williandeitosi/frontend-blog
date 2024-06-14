@@ -32,15 +32,6 @@ export function Home({ posts }: HomeProps) {
             <span>Full Stack Developer</span>
           </div>
         </div>
-        <div className={style.boxInfo}>
-          <h2>Um simpes blog</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
-            mollitia, veritatis facilis reiciendis tenetur blanditiis laboriosam
-            eaque quas vero rerum autem cumque cum alias, cupiditate unde at!
-            Illo, explicabo debitis.
-          </p>
-        </div>
         <div className={style.newPost}>
           <h3>Posts recentes</h3>
         </div>
