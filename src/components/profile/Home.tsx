@@ -1,4 +1,3 @@
-import { Header } from '../header/Header';
 import { PostList } from '../post/PostList';
 import style from './Home.module.css';
 
@@ -17,7 +16,6 @@ interface HomeProps {
 export function Home({ posts }: HomeProps) {
   return (
     <>
-      <Header />
       <div className={style.container}>
         <div className={style.boxAvatar}>
           <div className={style.border}>
