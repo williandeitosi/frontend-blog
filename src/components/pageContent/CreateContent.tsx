@@ -9,6 +9,7 @@ import 'highlight.js/styles/github-dark.css';
 import 'highlight.js/lib/languages/javascript';
 import 'highlight.js/lib/languages/python';
 import { useState, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const modules = {
   toolbar: [
@@ -23,8 +24,7 @@ const modules = {
     ['clean'],
   ],
   syntax: {
-    highlight: (text: string) =>
-      hljs.highlightAuto(text, ['javascript', 'python']).value,
+    highlight: (text: string) => hljs.highlightAuto(text).value,
   },
 };
 
@@ -56,15 +56,15 @@ interface PostType {
   date: string;
 }
 
-interface ModalProps {
-  onClose: () => void;
+interface CreateContentProps {
   addPost: (post: PostType) => void;
 }
 
-export function CreateContent({ onClose, addPost }: ModalProps) {
+export function CreateContent({ addPost }: CreateContentProps) {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [author, setAuthor] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -74,6 +74,7 @@ export function CreateContent({ onClose, addPost }: ModalProps) {
       content,
       author,
     };
+    console.log('Post Data:', postData);
     try {
       const response = await fetch('http://localhost:3000/posts', {
         method: 'POST',
@@ -89,14 +90,14 @@ export function CreateContent({ onClose, addPost }: ModalProps) {
 
       const result = await response.json();
       addPost(result);
-      onClose();
+      navigate(`/posts/${result.id}`);
     } catch (error) {
       console.error('Error creating post: ', error);
     }
   };
 
   return (
-    <div className={style.twoColunms}>
+    <div className={style.twoColumns}>
       <form onSubmit={handleSubmit}>
         <div className={style.modal}>
           <div>
@@ -106,7 +107,7 @@ export function CreateContent({ onClose, addPost }: ModalProps) {
           <div className={style.containerInputs}>
             <div className={style.inputsArea}>
               <div className={style.boxInputs}>
-                <label htmlFor='title'>Titulo</label>
+                <label htmlFor='title'>Título</label>
                 <input
                   type='text'
                   id='title'
@@ -126,9 +127,9 @@ export function CreateContent({ onClose, addPost }: ModalProps) {
                 />
               </div>
               <div className={style.textContainer}>
-                <label htmlFor='content'>Counteudo</label>
+                <label htmlFor='content'>Conteúdo</label>
                 <ReactQuill
-                  className={style.textEdior}
+                  className='my-editing-area'
                   theme='snow'
                   value={content}
                   modules={modules}
@@ -147,17 +148,19 @@ export function CreateContent({ onClose, addPost }: ModalProps) {
       </form>
       <div className={style.blogView}>
         <div className={style.content}>
-          <h2>Title:</h2>
+          <h2>Título:</h2>
           <p>{title}</p>
         </div>
         <div className={style.content}>
-          <h2>Author:</h2>
+          <h2>Autor:</h2>
           <p>{author}</p>
         </div>
-        <div>
-          <h3>Content:</h3>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-          {/* TODO put content in textarea for show scroll bar */}
+        <div className='ql-snow'>
+          <h3>Conteúdo:</h3>
+          <div
+            className='ql-editor'
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
       </div>
     </div>

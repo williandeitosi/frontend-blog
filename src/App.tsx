@@ -1,17 +1,46 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
-import { Profile } from './components/profile/Profile';
+import { Home } from './components/profile/Home';
 import { ReadMore } from './components/readPoster/ReadMore';
 import { CreateContent } from './components/pageContent/CreateContent';
+import { useEffect, useState } from 'react';
+
+interface PostType {
+  id: string;
+  title: string;
+  content: string;
+  author: string;
+  date: string;
+}
 
 export function App() {
+  const [posts, setPosts] = useState<PostType[]>([]);
+
+  const addPost = (newPost: PostType) => {
+    setPosts([newPost, ...posts]);
+  };
+
+  useEffect(() => {
+    fetch('http://localhost:3000/posts')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data: PostType[]) => {
+        setPosts(data);
+      })
+      .catch((error) => console.error('error fetch posts: ', error));
+  }, []);
+
   return (
     <Router>
       <div className='container'>
         <Routes>
-          <Route path='/' element={<Profile />} />
+          <Route path='/' element={<Home posts={posts} />} />
           <Route path='/posts/:id' element={<ReadMore />} />
-          <Route path='/hidden' element={<CreateContent />} />
+          <Route path='/hidden' element={<CreateContent addPost={addPost} />} />
         </Routes>
         {window.location.pathname !== '/hidden' && <Footer />}
       </div>

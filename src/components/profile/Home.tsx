@@ -1,9 +1,6 @@
-import { Plus } from '@phosphor-icons/react';
-import { useEffect, useState } from 'react';
 import { Cover } from '../cover/Cover';
-import { Modal } from '../modal/Modal';
 import { PostList } from '../post/PostList';
-import style from './Profile.module.css';
+import style from './Home.module.css';
 
 interface PostType {
   id: string;
@@ -13,35 +10,11 @@ interface PostType {
   date: string;
 }
 
-export function Profile() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [posts, setPosts] = useState<PostType[]>([]);
+interface HomeProps {
+  posts: PostType[];
+}
 
-  useEffect(() => {
-    fetch('http://localhost:3000/posts')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data: PostType[]) => {
-        setPosts(data);
-      })
-      .catch((error) => console.error('error fetch posts: ', error));
-  }, []);
-
-  const handleNewPost = () => {
-    setIsModalOpen(true);
-  };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const addPost = (post: PostType) => {
-    setPosts([post, ...posts]);
-  };
-
+export function Home({ posts }: HomeProps) {
   return (
     <>
       <Cover />
@@ -70,15 +43,7 @@ export function Profile() {
         </div>
         <div className={style.newPost}>
           <h3>Posts recentes</h3>
-          <button onClick={handleNewPost}>
-            <Plus size={18} weight='fill' /> Novo post
-          </button>
         </div>
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          addPost={addPost}
-        />
       </div>
       <PostList posts={posts} />
     </>

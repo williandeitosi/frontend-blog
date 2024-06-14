@@ -1,10 +1,9 @@
 .modal {
   background-color: #fff;
   padding: 20px;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2rem;
 
   height: 100%;
 
@@ -14,24 +13,36 @@
 
 .blogView {
   background-color: #fff;
-  height: 100%;
   padding: 20px;
 
   border: 2px solid black;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .blogView .content {
   margin-bottom: 1rem;
-
-  height: 8%;
 }
 
-.twoColunms {
+.ql-snow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ql-editor {
+  flex: 1;
+  height: auto;
+  max-height: none; /* Remove any fixed height constraint */
+  overflow: visible; /* Ensure content is visible and container grows */
+}
+
+.twoColumns {
   gap: 1rem;
   padding: 0.5rem;
   background-color: #fff;
-  height: 100vh;
+  min-height: 100vh; /* Ensure it takes at least the full viewport height */
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -45,7 +56,6 @@
 }
 
 .containerInputs {
-  height: 80%;
   width: 100%;
 }
 
@@ -57,19 +67,20 @@
   border: 2px solid rgba(0, 0, 0, 0.3);
   padding: 5px;
 }
+
 .textContainer {
   font-weight: bold;
-  height: 80%;
   width: 100%;
   outline: none;
 }
 
-.textEdior {
-  height: 80%;
+.customEditorArea {
+  height: auto; /* Definir uma altura automática */
+  max-height: none; /* Permitir crescimento */
+  overflow: visible; /* Garantir que o conteúdo é visível */
 }
 
 .inputsArea {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

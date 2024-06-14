@@ -33,12 +33,15 @@ export function ReadMore() {
     : '';
 
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ql-snow`}>
       <h1>{readPost.title}</h1>
       <p className={style.author}>
         Autor: <span>{readPost.author}</span>
       </p>
-      <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />;
+      <div
+        className='ql-editor'
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+      />
     </div>
   );
 }

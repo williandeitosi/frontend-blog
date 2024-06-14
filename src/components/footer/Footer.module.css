@@ -1,12 +1,11 @@
 footer {
   margin-top: 2rem;
   height: 80px;
-  background-color: blue;
-  color: #fff;
+  color: black;
   font-size: 0.7rem;
   font-weight: bold;
-
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
