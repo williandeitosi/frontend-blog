@@ -1,0 +1,26 @@
+.container {
+  height: 5rem;
+  padding: 0 3rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 6px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.container ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  align-items: center;
+}
+
+.container a {
+  text-decoration: none;
+  color: black;
+}
