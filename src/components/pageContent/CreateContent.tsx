@@ -63,7 +63,7 @@ interface CreateContentProps {
 export function CreateContent({ addPost }: CreateContentProps) {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
-  const [author, setAuthor] = useState<string>('');
+  const [author, setAuthor] = useState<string>('Willian');
   const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {

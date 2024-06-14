@@ -39,11 +39,16 @@ export function App() {
     <Router>
       <div className='container'>
         <Header />
-        <Routes>
-          <Route path='/' element={<Home posts={posts} />} />
-          <Route path='/posts/:id' element={<ReadMore />} />
-          <Route path='/hidden' element={<CreateContent addPost={addPost} />} />
-        </Routes>
+        <div className='content'>
+          <Routes>
+            <Route path='/' element={<Home posts={posts} />} />
+            <Route path='/posts/:id' element={<ReadMore />} />
+            <Route
+              path='/hidden'
+              element={<CreateContent addPost={addPost} />}
+            />
+          </Routes>
+        </div>
         {window.location.pathname !== '/hidden' && <Footer />}
       </div>
     </Router>
