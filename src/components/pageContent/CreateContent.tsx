@@ -74,7 +74,6 @@ export function CreateContent({ addPost }: CreateContentProps) {
       content,
       author,
     };
-    console.log('Post Data:', postData);
     try {
       const response = await fetch('http://localhost:3000/posts', {
         method: 'POST',
