@@ -4,6 +4,7 @@ import { Home } from './components/profile/Home';
 import { ReadMore } from './components/readPoster/ReadMore';
 import { CreateContent } from './components/pageContent/CreateContent';
 import { useEffect, useState } from 'react';
+import { Header } from './components/header/Header';
 
 interface PostType {
   id: string;
@@ -37,6 +38,7 @@ export function App() {
   return (
     <Router>
       <div className='container'>
+        <Header />
         <Routes>
           <Route path='/' element={<Home posts={posts} />} />
           <Route path='/posts/:id' element={<ReadMore />} />

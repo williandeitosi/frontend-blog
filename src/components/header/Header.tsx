@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import style from './Header.module.css';
 
 export function Header() {
@@ -6,7 +7,7 @@ export function Header() {
       <h1 className={style.logo}>Jornada Dev</h1>
       <ul>
         <li>
-          <a href=''>Home</a>
+          <Link to={'/'}>Home</Link>
         </li>
         <li>
           <a href='#'>Sobre</a>
