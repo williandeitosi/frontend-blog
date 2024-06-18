@@ -1,0 +1,70 @@
+.container {
+  width: 70%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-color: #cacaca;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #000000;
+  font-weight: bold;
+  color: #fff;
+}
+
+.btn {
+  display: flex;
+  gap: 8px;
+}
+
+.editar {
+  padding: 8px 12px;
+  border: none;
+  background-color: #cacaca;
+  color: #fff;
+  cursor: pointer;
+}
+.deletar {
+  padding: 8px 12px;
+  border: none;
+  background-color: #cacaca;
+  color: #fff;
+  cursor: pointer;
+}
+.view {
+  padding: 8px 12px;
+  border: none;
+  background-color: #cacaca;
+  color: #fff;
+  cursor: pointer;
+}
+
+.assPost {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #9c00f0;
+  color: #fff;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: ease 0.2s;
+}
+
+.assPost:hover {
+  padding: 12px 17px;
+  font-weight: bold;
+}

@@ -6,6 +6,7 @@ import { Header } from './components/header/Header';
 import { Home } from './components/home/Home';
 import { CreateContent } from './components/pageContent/CreateContent';
 import { ReadMore } from './components/readPoster/ReadMore';
+import { Panel } from './components/admin/panel/Panel';
 
 interface PostType {
   id: string;
@@ -44,11 +45,12 @@ export function App() {
           <Routes>
             <Route path='/' element={<Home posts={posts} />} />
             <Route path='/posts/:id' element={<ReadMore />} />
+            <Route path='/admin' element={<Login />} />
+            <Route path='/admin/panel' element={<Panel posts={posts} />} />
             <Route
-              path='/hidden'
+              path='/admin/newpost'
               element={<CreateContent addPost={addPost} />}
             />
-            <Route path='/admin' element={<Login />} />
           </Routes>
         </div>
         <Footer />
