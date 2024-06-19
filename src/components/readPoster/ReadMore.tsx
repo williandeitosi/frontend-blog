@@ -8,7 +8,7 @@ interface PostData {
   title: string;
   author: string;
   content: string;
-  date: string;
+  created_at: string;
 }
 
 export function ReadMore() {
@@ -37,6 +37,9 @@ export function ReadMore() {
       <h1>{readPost.title}</h1>
       <p className={style.author}>
         Autor: <span>{readPost.author}</span>
+      </p>
+      <p className={style.author}>
+        Publicado: <span>{readPost.created_at}</span>
       </p>
       <div
         className='ql-editor'
