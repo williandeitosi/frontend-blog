@@ -6,7 +6,7 @@ interface PostType {
   title: string;
   content: string;
   author: string;
-  date: string;
+  created_at: string;
 }
 
 interface HomeProps {

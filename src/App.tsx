@@ -7,13 +7,14 @@ import { Home } from './components/home/Home';
 import { CreateContent } from './components/pageContent/CreateContent';
 import { ReadMore } from './components/readPoster/ReadMore';
 import { Panel } from './components/admin/panel/Panel';
+import './App.css';
 
 interface PostType {
   id: string;
   title: string;
   content: string;
   author: string;
-  date: string;
+  created_at: string;
 }
 
 export function App() {
@@ -34,25 +35,46 @@ export function App() {
       .then((data: PostType[]) => {
         setPosts(data);
       })
-      .catch((error) => console.error('error fetch posts: ', error));
+      .catch((error) => console.error('Error fetching posts:', error));
   }, []);
+
+  const deletePost = async (postId: string) => {
+    try {
+      const response = await fetch(`http://localhost:3000/posts/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to delete post');
+      }
+      setPosts(posts.filter((post) => post.id !== postId));
+    } catch (err) {
+      console.error('Failed to delete post:');
+    }
+  };
 
   return (
     <Router>
-      <div className='container'>
+      <div className='app-container'>
         <Header />
-        <div className='content'>
+        <main className='app-content'>
           <Routes>
             <Route path='/' element={<Home posts={posts} />} />
             <Route path='/posts/:id' element={<ReadMore />} />
             <Route path='/admin' element={<Login />} />
-            <Route path='/admin/panel' element={<Panel posts={posts} />} />
+            <Route
+              path='/admin/panel'
+              element={<Panel posts={posts} onDeletePost={deletePost} />}
+            />
             <Route
               path='/admin/newpost'
               element={<CreateContent addPost={addPost} />}
             />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
     </Router>

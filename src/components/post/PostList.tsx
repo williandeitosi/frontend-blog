@@ -6,7 +6,7 @@ interface PostType {
   title: string;
   content: string;
   author: string;
-  date: string;
+  created_at: string;
 }
 
 interface PostListProps {
@@ -21,7 +21,7 @@ export function PostList({ posts }: PostListProps) {
           id={post.id}
           key={index}
           author={post.author}
-          date={post.date}
+          date={post.created_at}
           title={post.title}
           description={post.content}
         />
