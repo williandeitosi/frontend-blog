@@ -1,6 +1,6 @@
 import { Eye, PencilLine, Trash } from '@phosphor-icons/react';
 import style from './Panel.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface PostType {
   id: string;
@@ -13,9 +13,17 @@ interface PostType {
 interface PostListProps {
   posts: PostType[];
   onDeletePost: (postId: string) => void;
+  onEditPost: (post: PostType) => void;
 }
 
-export function Panel({ posts, onDeletePost }: PostListProps) {
+export function Panel({ posts, onDeletePost, onEditPost }: PostListProps) {
+  const navigate = useNavigate();
+
+  const handleEditClick = (post: PostType) => {
+    onEditPost(post);
+    navigate(`/admin/edit/${post.id}`);
+  };
+
   const handleDeleteClick = (postId: string) => {
     if (window.confirm('Tem certeza que deseja deletar este post?')) {
       onDeletePost(postId);
@@ -45,7 +53,10 @@ export function Panel({ posts, onDeletePost }: PostListProps) {
                     <Eye size={22} color='#707070' />
                   </Link>
                 </button>
-                <button className={style.editar}>
+                <button
+                  className={style.editar}
+                  onClick={() => handleEditClick(post)}
+                >
                   <PencilLine size={22} color='#9c00f0' />
                 </button>
                 <button

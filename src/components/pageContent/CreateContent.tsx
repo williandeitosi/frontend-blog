@@ -58,40 +58,69 @@ interface PostType {
 
 interface CreateContentProps {
   addPost: (post: PostType) => void;
+  editPost?: (post: PostType) => void;
+  postToEdit?: PostType | null;
 }
 
-export function CreateContent({ addPost }: CreateContentProps) {
-  const [title, setTitle] = useState<string>('');
-  const [content, setContent] = useState<string>('');
-  const [author, setAuthor] = useState<string>('Willian');
+export function CreateContent({
+  addPost,
+  editPost,
+  postToEdit,
+}: CreateContentProps) {
+  const [title, setTitle] = useState<string>(
+    postToEdit ? postToEdit.title : ''
+  );
+  const [content, setContent] = useState<string>(
+    postToEdit ? postToEdit.content : ''
+  );
+  const [author, setAuthor] = useState<string>(
+    postToEdit ? postToEdit.author : 'Willian'
+  );
   const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     const postData = {
+      id: postToEdit ? postToEdit.id : '',
       title,
       content,
       author,
     };
+
+    if (postToEdit) {
+      postData.id = postToEdit.id;
+    }
     try {
-      const response = await fetch('http://localhost:3000/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(postData),
-      });
+      const response = await fetch(
+        `http://localhost:3000/posts${postToEdit ? `/${postToEdit.id}` : ''}`,
+        {
+          method: postToEdit ? 'PUT' : 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(postData),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error('Failed to create post');
+        throw new Error(
+          postToEdit ? 'Failed to update post' : 'Failed to create post'
+        );
       }
 
       const result = await response.json();
-      addPost(result);
+      if (postToEdit && editPost) {
+        editPost(result);
+      } else {
+        addPost(result);
+      }
       navigate(`/posts/${result.id}`);
     } catch (error) {
-      console.error('Error creating post: ', error);
+      console.error(
+        postToEdit ? 'Error updating post: ' : 'Error creating post: ',
+        error
+      );
     }
   };
 
@@ -100,8 +129,11 @@ export function CreateContent({ addPost }: CreateContentProps) {
       <form onSubmit={handleSubmit}>
         <div className={style.modal}>
           <div>
-            <h2>Criar um novo post</h2>
-            <p>Preencha o formulário para criar uma nova postagem no blog.</p>
+            <h2>{postToEdit ? 'Editar Post' : 'Criar um novo post'}</h2>
+            <p>
+              Preencha o formulário para {postToEdit ? 'edit' : 'create'} uma
+              postagem no blog.
+            </p>
           </div>
           <div className={style.containerInputs}>
             <div className={style.inputsArea}>
@@ -140,7 +172,7 @@ export function CreateContent({ addPost }: CreateContentProps) {
           </div>
           <div className={style.boxBtns}>
             <button type='submit' className={style.btnPublic}>
-              Publicar
+              {postToEdit ? 'Editar' : 'Publicar'}
             </button>
           </div>
         </div>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import './App.css';
 import { Login } from './components/admin/login/Login';
+import { Panel } from './components/admin/panel/Panel';
 import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
 import { Home } from './components/home/Home';
 import { CreateContent } from './components/pageContent/CreateContent';
 import { ReadMore } from './components/readPoster/ReadMore';
-import { Panel } from './components/admin/panel/Panel';
-import './App.css';
 
 interface PostType {
   id: string;
@@ -19,9 +19,20 @@ interface PostType {
 
 export function App() {
   const [posts, setPosts] = useState<PostType[]>([]);
+  const [postToEdit, setPostToEdit] = useState<PostType | null>(null);
 
   const addPost = (newPost: PostType) => {
     setPosts([newPost, ...posts]);
+  };
+
+  const editPost = (updatePost: PostType) => {
+    setPosts(
+      posts.map((post) => (post.id === updatePost.id ? updatePost : post))
+    );
+  };
+
+  const handleEditClick = (post: PostType) => {
+    setPostToEdit(post);
   };
 
   useEffect(() => {
@@ -67,11 +78,27 @@ export function App() {
             <Route path='/admin' element={<Login />} />
             <Route
               path='/admin/panel'
-              element={<Panel posts={posts} onDeletePost={deletePost} />}
+              element={
+                <Panel
+                  posts={posts}
+                  onDeletePost={deletePost}
+                  onEditPost={handleEditClick}
+                />
+              }
             />
             <Route
               path='/admin/newpost'
               element={<CreateContent addPost={addPost} />}
+            />
+            <Route
+              path='/admin/edit/:id'
+              element={
+                <CreateContent
+                  addPost={addPost}
+                  editPost={editPost}
+                  postToEdit={postToEdit}
+                />
+              }
             />
           </Routes>
         </main>
