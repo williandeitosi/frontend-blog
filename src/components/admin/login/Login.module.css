@@ -2,9 +2,8 @@
   background-color: rgb(202, 202, 202);
   height: 15rem;
   width: 25rem;
-
+  margin: auto;
   font-size: 0.8rem;
-  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -41,4 +40,13 @@
 }
 .boxLogin button:hover {
   background-color: rgb(198, 198, 198);
+}
+
+.boxInputs button {
+  margin-top: 2rem;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
 }
