@@ -52,10 +52,14 @@ export function App() {
 
   const deletePost = async (postId: string) => {
     try {
+      const getToken = (): string | null => {
+        return localStorage.getItem('token');
+      };
       const response = await fetch(`http://localhost:3000/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${getToken()}`,
         },
       });
       if (!response.ok) {
