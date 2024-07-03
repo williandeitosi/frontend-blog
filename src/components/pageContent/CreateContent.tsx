@@ -8,7 +8,7 @@ import 'highlight.js/styles/github-dark.css';
 
 import 'highlight.js/lib/languages/javascript';
 import 'highlight.js/lib/languages/python';
-import { useState, FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const modules = {
@@ -92,11 +92,15 @@ export function CreateContent({
       postData.id = postToEdit.id;
     }
     try {
+      const getToken = (): string | null => {
+        return localStorage.getItem('token');
+      };
       const response = await fetch(
         `http://localhost:3000/posts${postToEdit ? `/${postToEdit.id}` : ''}`,
         {
           method: postToEdit ? 'PUT' : 'POST',
           headers: {
+            Authorization: `Bearer ${getToken()}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(postData),

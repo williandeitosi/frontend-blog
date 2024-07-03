@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import { Login } from './components/admin/login/Login';
 import { Panel } from './components/admin/panel/Panel';
+import PrivateRoute from './components/admin/privateRoute/PrivateRoutes';
 import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
 import { Home } from './components/home/Home';
@@ -79,24 +80,34 @@ export function App() {
             <Route
               path='/admin/panel'
               element={
-                <Panel
-                  posts={posts}
-                  onDeletePost={deletePost}
-                  onEditPost={handleEditClick}
+                <PrivateRoute
+                  element={
+                    <Panel
+                      posts={posts}
+                      onDeletePost={deletePost}
+                      onEditPost={handleEditClick}
+                    />
+                  }
                 />
               }
             />
             <Route
               path='/admin/newpost'
-              element={<CreateContent addPost={addPost} />}
+              element={
+                <PrivateRoute element={<CreateContent addPost={addPost} />} />
+              }
             />
             <Route
               path='/admin/edit/:id'
               element={
-                <CreateContent
-                  addPost={addPost}
-                  editPost={editPost}
-                  postToEdit={postToEdit}
+                <PrivateRoute
+                  element={
+                    <CreateContent
+                      addPost={addPost}
+                      editPost={editPost}
+                      postToEdit={postToEdit}
+                    />
+                  }
                 />
               }
             />

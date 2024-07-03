@@ -1,6 +1,6 @@
 import { Eye, PencilLine, Trash } from '@phosphor-icons/react';
-import style from './Panel.module.css';
 import { Link, useNavigate } from 'react-router-dom';
+import style from './Panel.module.css';
 
 interface PostType {
   id: string;
