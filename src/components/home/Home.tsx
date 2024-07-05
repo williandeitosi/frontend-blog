@@ -16,8 +16,8 @@ interface HomeProps {
 export function Home({ posts }: HomeProps) {
   return (
     <>
-      <div className={style.container}>
-        <div className={style.boxAvatar}>
+      <div className='flex flex-col items-center'>
+        <div className=' flex items-center justify-start w-full gap-2 my-6 px-4 lg:px-16 xl:px-20'>
           <div className={style.border}>
             <img
               className={style.avatar}
@@ -26,13 +26,13 @@ export function Home({ posts }: HomeProps) {
             />
           </div>
           <div>
-            <h1>Willian Giovanini Dei Tosi</h1>
-            <span>Full Stack Developer</span>
+            <h1 className='text-sm md:text-xl'>Willian Giovanini Dei Tosi</h1>
+            <span className='opacity-40 text-xs md:text-base'>
+              Full Stack Developer
+            </span>
           </div>
         </div>
-        <div className={style.newPost}>
-          <h3>Posts recentes</h3>
-        </div>
+        <h3 className='text-xl font-bold mb-6'>Posts recentes</h3>
       </div>
       <PostList posts={posts} />
     </>
