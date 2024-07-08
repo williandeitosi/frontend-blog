@@ -1,5 +1,4 @@
 import { Post } from './Post';
-import style from './Post.module.css';
 
 interface PostType {
   id: string;
@@ -15,7 +14,7 @@ interface PostListProps {
 
 export function PostList({ posts }: PostListProps) {
   return (
-    <div className={style.postListContainer}>
+    <div className='grid gap-3 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 '>
       {posts.map((post, index) => (
         <Post
           id={post.id}

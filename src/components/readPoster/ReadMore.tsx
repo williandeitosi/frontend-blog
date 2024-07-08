@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-
-import style from './ReadMore.module.css';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 interface PostData {
   title: string;
@@ -33,12 +31,12 @@ export function ReadMore() {
     : '';
 
   return (
-    <div className={`${style.container} ql-snow`}>
-      <h1>{readPost.title}</h1>
-      <p className={style.author}>
+    <div className={`break-all mx-10 lg:mx-24 ql-snow`}>
+      <h1 className='text-center font-bold text-3xl mb-10'>{readPost.title}</h1>
+      <p className='font-bold mb-4 opacity-40'>
         Autor: <span>{readPost.author}</span>
       </p>
-      <p className={style.author}>
+      <p className='font-bold mb-4 opacity-40'>
         Publicado: <span>{readPost.created_at}</span>
       </p>
       <div

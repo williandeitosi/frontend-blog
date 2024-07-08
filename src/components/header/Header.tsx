@@ -35,7 +35,7 @@ export function Header() {
       >
         <ul className='p-2 flex flex-col gap-3'>
           <li>
-            <Link to={'/'} className='hover:font-bold'>
+            <Link onClick={handleClick} to={'/'} className='hover:font-bold'>
               Home
             </Link>
           </li>
