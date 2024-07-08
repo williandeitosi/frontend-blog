@@ -31,7 +31,7 @@ export function ReadMore() {
     : '';
 
   return (
-    <div className={`break-all mx-10 lg:mx-24 ql-snow`}>
+    <div className={`break-all sm:mx-10 lg:mx-24 ql-snow`}>
       <h1 className='text-center font-bold text-3xl mb-10'>{readPost.title}</h1>
       <p className='font-bold mb-4 opacity-40'>
         Autor: <span>{readPost.author}</span>
