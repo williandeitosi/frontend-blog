@@ -1,4 +1,5 @@
 import { Eye, PencilLine, Trash } from '@phosphor-icons/react';
+import { format } from 'date-fns';
 import { Link, useNavigate } from 'react-router-dom';
 import style from './Panel.module.css';
 
@@ -19,6 +20,9 @@ interface PostListProps {
 export function Panel({ posts, onDeletePost, onEditPost }: PostListProps) {
   const navigate = useNavigate();
 
+  const formatDate = (dateString: string) => {
+    return format(new Date(dateString), 'dd/MM/yyyy');
+  };
   const handleEditClick = (post: PostType) => {
     onEditPost(post);
     navigate(`/admin/edit/${post.id}`);
@@ -46,7 +50,7 @@ export function Panel({ posts, onDeletePost, onEditPost }: PostListProps) {
             <tr key={post.id}>
               <td>{post.title}</td>
               <td>{post.author}</td>
-              <td>{post.created_at}</td>
+              <td>{formatDate(post.created_at)}</td>
               <td className={style.btn}>
                 <button className={style.view}>
                   <Link to={`/posts/${post.id}`}>
@@ -70,7 +74,7 @@ export function Panel({ posts, onDeletePost, onEditPost }: PostListProps) {
           ))}
         </tbody>
       </table>
-      <Link to={'/admin/newpost'} className={style.assPost}>
+      <Link to={'/admin/newpost'} className={style.addPost}>
         Add Post +
       </Link>
     </div>

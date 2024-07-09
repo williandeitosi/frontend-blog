@@ -12,15 +12,15 @@ interface PostProps {
 export function Post({ id, title, description }: PostProps) {
   return (
     <div
-      className={`flex flex-col justify-center p-4 border-2 rounded-lg h-56 min-w-full ${style.myBoxShadow}`}
+      className={`flex flex-col justify-center p-4 border-2 rounded-lg h-60 w-full ${style.myBoxShadow}`}
     >
-      <h1 className='text-center font-bold text-xl'>{title}</h1>
+      <h2 className='text-center font-bold text-xl mb-4'>{title}</h2>
       <div
         className={style.containerPost}
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <Link
-        className='text-center text-green-500 hover:text-green-600 hover:font-bold'
+        className='text-center text-green-500 hover:text-green-600 hover:font-bold '
         to={`/posts/${id}`}
       >
         Ler Mais +
